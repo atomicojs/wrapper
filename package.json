@@ -1,6 +1,6 @@
 {
     "name": "@atomico/wrapper",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "",
     "main": "index.js",
     "type": "module",
@@ -12,7 +12,7 @@
         "build": "vite build",
         "test": "vitest",
         "coverage": "vitest run --coverage",
-        "exports": "exports src/* --exports --types --main create-auto",
+        "exports": "exports src/* --exports --types --main proxy",
         "prepublishOnly": "npm run coverage && npm run exports",
         "create:component": "scaff component src"
     },
