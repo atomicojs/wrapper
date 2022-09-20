@@ -12,7 +12,7 @@
         "build": "vite build",
         "test": "vitest",
         "coverage": "vitest run --coverage",
-        "exports": "exports src/* --exports --types --main create-auto --watch",
+        "exports": "exports src/* --exports --types --main create-auto",
         "prepublishOnly": "npm run coverage && npm run exports",
         "create:component": "scaff component src"
     },
