@@ -1,25 +1,29 @@
-import "atomico/ssr/load";
+const ID = Symbol.for("@atomico/wrapper");
+
+globalThis[ID] = globalThis[ID] || {
+    registered: new Map<
+        CustomElementConstructor,
+        [string, ElementDefinitionOptions | undefined]
+    >(),
+    count: 0,
+};
 
 const { define } = customElements;
 
-let idCounter = 0;
-
 customElements.define = function (tagName, Element, options) {
     define.call(this, tagName, Element, options);
-    registered.set(Element, [tagName, options]);
+    globalThis[ID].registered.set(Element, [tagName, options]);
 };
-
-const registered = new Map<
-    CustomElementConstructor,
-    [string, ElementDefinitionOptions | undefined]
->();
 
 export const getDefinition = (
     base: CustomElementConstructor,
-    selfDefine = false
+    alwaysDefine = false
 ) => {
-    if (selfDefine && !registered.has(base))
-        customElements.define(`c-${Date.now()}-${idCounter++}`, base);
+    if (alwaysDefine && !globalThis[ID].registered.has(base))
+        customElements.define(
+            `c-${Date.now()}-${globalThis[ID].count++}`,
+            base
+        );
 
-    return registered.get(base);
+    return globalThis[ID].registered.get(base);
 };
