@@ -40,7 +40,9 @@
     "exports": {
         "./proxy": "./dist/proxy.js",
         ".": "./dist/proxy.js",
-        "./types": "./dist/types.js"
+        "./types": "./dist/types.js",
+        "./allow-deduple": "./dist/allow-deduple.js",
+        "./options": "./dist/options.js"
     },
     "types": "types/proxy.d.ts",
     "typesVersions": {
@@ -50,6 +52,12 @@
             ],
             "types": [
                 "./types/types.d.ts"
+            ],
+            "allow-deduple": [
+                "./types/allow-deduple.d.ts"
+            ],
+            "options": [
+                "./types/options.d.ts"
             ]
         }
     }
