@@ -35,5 +35,22 @@
     "bugs": {
         "url": "https://github.com/atomicojs/wrapper/issues"
     },
-    "homepage": "https://github.com/atomicojs/wrapper#readme"
+    "homepage": "https://github.com/atomicojs/wrapper#readme",
+    "module": "./dist/proxy.js",
+    "exports": {
+        "./proxy": "./dist/proxy.js",
+        ".": "./dist/proxy.js",
+        "./types": "./dist/types.js"
+    },
+    "types": "types/proxy.d.ts",
+    "typesVersions": {
+        "*": {
+            "proxy": [
+                "./types/proxy.d.ts"
+            ],
+            "types": [
+                "./types/types.d.ts"
+            ]
+        }
+    }
 }

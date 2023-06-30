@@ -1,3 +1,5 @@
+import options from "./options";
+
 const ID = Symbol.for("@atomico/wrapper");
 
 globalThis[ID] = globalThis[ID] || {
@@ -8,11 +10,22 @@ globalThis[ID] = globalThis[ID] || {
     count: 0,
 };
 
+const createId = () => `c-${Date.now()}-${globalThis[ID].count++}`;
+
 const { define } = customElements;
 
-customElements.define = function (tagName, Element, options) {
-    define.call(this, tagName, Element, options);
-    globalThis[ID].registered.set(Element, [tagName, options]);
+customElements.define = function (tagName, Element, opts) {
+    try {
+        define.call(this, tagName, Element, opts);
+    } catch (e) {
+        if (options.deduple && !globalThis[ID].registered.has(Element)) {
+            tagName = tagName + "-" + createId();
+            define.call(this, tagName, Element, opts);
+        } else {
+            throw e;
+        }
+    }
+    globalThis[ID].registered.set(Element, [tagName, opts]);
 };
 
 export const getDefinition = (
@@ -20,10 +33,7 @@ export const getDefinition = (
     alwaysDefine = false
 ) => {
     if (alwaysDefine && !globalThis[ID].registered.has(base))
-        customElements.define(
-            `c-${Date.now()}-${globalThis[ID].count++}`,
-            base
-        );
+        customElements.define(createId(), base);
 
     return globalThis[ID].registered.get(base);
 };
