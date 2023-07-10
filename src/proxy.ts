@@ -18,7 +18,7 @@ customElements.define = function (tagName, Element, opts) {
     try {
         define.call(this, tagName, Element, opts);
     } catch (e) {
-        if (options.deduple && !globalThis[ID].registered.has(Element)) {
+        if (options.deduple && customElements.get(tagName)) {
             tagName = tagName + "-" + createId();
             define.call(this, tagName, Element, opts);
         } else {
