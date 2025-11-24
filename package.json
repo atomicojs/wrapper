@@ -18,7 +18,7 @@
     },
     "keywords": [],
     "devDependencies": {
-        "@atomico/exports": "^0.37.0",
+        "@atomico/exports": "^1.13.2",
         "@atomico/tsconfig": "^1.0.0",
         "@vitest/coverage-c8": "^0.23.4",
         "happy-dom": "^6.0.4",
