@@ -1,6 +1,5 @@
-import {
-  options_default
-} from "./chunk-2GMH33RV.js";
-export {
-  options_default as default
+const ID = Symbol.for("@atomico/wrapper/options");
+globalThis[ID] = globalThis[ID] || {
+    deduple: false,
 };
+export default globalThis[ID];

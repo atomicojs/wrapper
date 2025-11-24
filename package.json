@@ -12,8 +12,9 @@
         "build": "vite build",
         "test": "vitest",
         "coverage": "vitest run --coverage",
-        "exports": "exports src/* --exports --types --main proxy",
-        "prepublishOnly": "npm run coverage && npm run exports",
+        "compile": "tsc",
+        "exports": "exports \"dist/**\"",
+        "prepublishOnly": "npm run coverage && npm run compile && npm run exports",
         "create:component": "scaff component src"
     },
     "keywords": [],
@@ -39,25 +40,37 @@
     "module": "./dist/proxy.js",
     "exports": {
         "./proxy": "./dist/proxy.js",
-        ".": "./dist/proxy.js",
-        "./types": "./dist/types.js",
-        "./allow-deduple": "./dist/allow-deduple.js",
-        "./options": "./dist/options.js"
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./types": {
+            "types": "./dist/types.d.ts",
+            "default": "./dist/types.js"
+        },
+        "./allow-deduple": {
+            "types": "./dist/allow-deduple.d.ts",
+            "default": "./dist/allow-deduple.js"
+        },
+        "./options": {
+            "types": "./dist/options.d.ts",
+            "default": "./dist/options.js"
+        }
     },
-    "types": "types/proxy.d.ts",
+    "types": "dist/index.d.ts",
     "typesVersions": {
         "*": {
             "proxy": [
                 "./types/proxy.d.ts"
             ],
             "types": [
-                "./types/types.d.ts"
+                "dist/types.d.ts"
             ],
             "allow-deduple": [
-                "./types/allow-deduple.d.ts"
+                "dist/allow-deduple.d.ts"
             ],
             "options": [
-                "./types/options.d.ts"
+                "dist/options.d.ts"
             ]
         }
     }
