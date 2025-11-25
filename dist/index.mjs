@@ -1,4 +1,4 @@
-import options from "./options";
+import options from "./options.mjs";
 const ID = Symbol.for("@atomico/wrapper");
 const withProxy = ID in globalThis;
 globalThis[ID] = globalThis[ID] || {

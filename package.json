@@ -1,8 +1,8 @@
 {
     "name": "@atomico/wrapper",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "",
-    "main": "index.js",
+    "main": "dist/index.mjs",
     "type": "module",
     "publishConfig": {
         "access": "public"
@@ -19,7 +19,7 @@
     },
     "keywords": [],
     "devDependencies": {
-        "@atomico/exports": "^1.13.2",
+        "@atomico/exports": "^2.1.0-beta",
         "@atomico/tsconfig": "^1.0.0",
         "@vitest/coverage-c8": "^0.23.4",
         "happy-dom": "^6.0.4",
@@ -37,41 +37,23 @@
         "url": "https://github.com/atomicojs/wrapper/issues"
     },
     "homepage": "https://github.com/atomicojs/wrapper#readme",
-    "module": "./dist/proxy.js",
+    "types": "dist/index.d.mts",
     "exports": {
-        "./proxy": "./dist/proxy.js",
-        ".": {
-            "types": "./dist/index.d.ts",
-            "default": "./dist/index.js"
-        },
-        "./types": {
-            "types": "./dist/types.d.ts",
-            "default": "./dist/types.js"
-        },
         "./allow-deduple": {
-            "types": "./dist/allow-deduple.d.ts",
-            "default": "./dist/allow-deduple.js"
+            "types": "./dist/allow-deduple.d.mts",
+            "default": "./dist/allow-deduple.mjs"
+        },
+        ".": {
+            "types": "./dist/index.d.mts",
+            "default": "./dist/index.mjs"
         },
         "./options": {
-            "types": "./dist/options.d.ts",
-            "default": "./dist/options.js"
-        }
-    },
-    "types": "dist/index.d.ts",
-    "typesVersions": {
-        "*": {
-            "proxy": [
-                "./types/proxy.d.ts"
-            ],
-            "types": [
-                "dist/types.d.ts"
-            ],
-            "allow-deduple": [
-                "dist/allow-deduple.d.ts"
-            ],
-            "options": [
-                "dist/options.d.ts"
-            ]
+            "types": "./dist/options.d.mts",
+            "default": "./dist/options.mjs"
+        },
+        "./types": {
+            "types": "./dist/types.d.mts",
+            "default": "./dist/types.mjs"
         }
     }
 }

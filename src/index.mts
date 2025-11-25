@@ -1,4 +1,4 @@
-import options from "./options";
+import options from "./options.mjs";
 
 const ID = Symbol.for("@atomico/wrapper");
 
@@ -38,7 +38,7 @@ if (!withProxy && typeof customElements !== "undefined") {
 export const getDefinition = (
     base: CustomElementConstructor,
     alwaysDefine = false
-) => {
+): [string, any] => {
     if (alwaysDefine && !globalThis[ID].registered.has(base)) {
         customElements.define(createId(), base);
     }

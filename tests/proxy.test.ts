@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getDefinition } from "../src/index.js";
+import { getDefinition } from "../src/index.mjs";
 
 describe("proxy", () => {
     it("capture 1", () => {
